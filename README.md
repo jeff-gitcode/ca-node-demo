@@ -15,7 +15,7 @@ $ yarn add -D @types/express
 
 $ npm init @eslint/config
 
-$ yarn add -D eslint
+$ yarn add -D eslint nodemon
 
 $ yarn add -D typescript ts-node @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
