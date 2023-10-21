@@ -18,4 +18,10 @@ $ npm init @eslint/config
 $ yarn add -D eslint nodemon
 
 $ yarn add -D typescript ts-node @typescript-eslint/eslint-plugin @typescript-eslint/parser
+
+$ yarn build
+$ yarn start:dev
+
+# http://localhost:3111/users
+
 ```
