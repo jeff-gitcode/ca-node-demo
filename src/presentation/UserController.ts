@@ -29,7 +29,7 @@ export class UserController {
         }
     }
 
-    @httpPost("/create")
+    @httpPost("/")
     async createUser(@request() req: Request, @response() res: Response) {
         try {
             const newUser: User = new User(3, req.body.name, req.body.email);
@@ -50,7 +50,7 @@ export class UserController {
         }
     }
 
-    @httpDelete("/delete/:id")
+    @httpDelete("/:id")
     async deleteUser(req: Request, res: Response) {
         try {
             const user = await this.userUseCase.deleteUser(req.params.id);
