@@ -8,9 +8,11 @@
     "lintfix": "eslint . --ext .ts --fix",
     "prebuild": "pnpm lint",
     "tsc": "tsc",
-    "start": "node dist/main.js",
+    "start:dist": "node dist/main.js",
+    "start": "ts-node ./src/app.ts",
     "build": "npx tsc",
-    "start:dev": "nodemon",
+    "start:watch": "ts-node-dev --respawn ./src/app.ts",
+    "start:dev": "nodemon ./src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -30,6 +32,7 @@
     "eslint-plugin-react": "^7.33.2",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   }
 }

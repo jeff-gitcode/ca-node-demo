@@ -8,13 +8,24 @@ import { TYPES } from "../types";
 export class UserUseCase {
     constructor(@inject(TYPES.IUserRepository) private userRepository: IUserRepository) { }
 
-    getUsers(): User[] {
+    async getUsers(): Promise<User[]> {
         // Simulated data for demonstration purposes
-        return this.userRepository.findAll();
+        return await this.userRepository.findAll();
+    }
 
-        // return [
-        //     new User(1, "John Doe", "john@example.com"),
-        //     new User(2, "Jane Smith", "jane@example.com"),
-        // ];
+    async getUser(id: string): Promise<User | null> {
+        return await this.userRepository.find(id);
+    }
+
+    async createUser(user: User): Promise<User | null> {
+        return await this.userRepository.create(user);
+    }
+
+    async updateUser(user: User): Promise<User | null> {
+        return await this.userRepository.update(user);
+    }
+
+    async deleteUser(id: string): Promise<boolean> {
+        return await this.userRepository.delete(id);
     }
 }

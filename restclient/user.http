@@ -1,0 +1,16 @@
+###  GetUsers
+GET http://localhost:3111/users HTTP/1.1
+content-type: application/json
+
+###  GetUserByID
+GET http://localhost:3111/users/1 HTTP/1.1
+content-type: application/json
+
+### createUser
+POST http://localhost:3111/users/create HTTP/1.1
+content-type: application/json
+
+{
+  "name": "John New",
+  "email": "john.doe@email.com",
+}

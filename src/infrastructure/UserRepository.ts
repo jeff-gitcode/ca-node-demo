@@ -1,29 +1,47 @@
 import { injectable } from "inversify";
 import { IUserRepository } from "../application/interface/IRepository";
 import { User } from "../domain/User";
+import { users } from "./db";
 
 @injectable()
 export class UserRepository implements IUserRepository {
-    create(item: User): User | null {
-        console.log(item);
-        throw new Error("Method not implemented.");
+    async create(item: User): Promise<User | null> {
+        users.push(item);
+        return item;
     }
-    update(item: User): User | null {
-        console.log(item);
-        throw new Error("Method not implemented.");
+
+    async update(item: User): Promise<User | null> {
+        users.forEach((user, index) => {
+            if (user.id === item.id) {
+                users[index] = item;
+            }
+        });
+
+        return item;
     }
-    delete(id: string): boolean {
-        console.log(id);
-        throw new Error("Method not implemented.");
+
+    async delete(id: string): Promise<boolean> {
+        users.forEach((user, index) => {
+            if (user.id.toString() === id) {
+                users.splice(index, 1);
+            }
+        });
+
+        return true;
     }
-    find(id: string): User | null {
-        console.log(id);
-        throw new Error("Method not implemented.");
+    async find(id: string): Promise<User | null> {
+        let user: User | null = null;
+
+        users.forEach((item) => {
+            if (item.id.toString() === id) {
+                user = item;
+            }
+        });
+
+        return user;
     }
-    findAll(): User[] {
-        return [
-            new User(1, "John Doe", "john@example.com"),
-            new User(2, "Jane Smith", "jane@example.com"),
-        ];
+
+    async findAll(): Promise<User[]> {
+        return users;
     }
 }
