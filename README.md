@@ -9,9 +9,9 @@ $ npx --package typescript tsc --init
 or npm install typescript@latest -g
 tsc --init
 
-$ yarn add inversify inversify-express-utils express reflect-metadata
+$ yarn add inversify inversify-express-utils express reflect-metadata dotenv cors
 
-$ yarn add -D @types/express
+$ yarn add -D @types/express @types/cors
 
 $ npm init @eslint/config
 
