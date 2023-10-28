@@ -20,6 +20,10 @@ $ yarn add -D eslint nodemon
 
 $ yarn add -D typescript ts-node @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
+# swagger
+$ yarn add swagger-ui-express swagger-jsdoc
+$ yarn add -D @types/swagger-ui-express @types/swagger-jsdoc
+
 $ yarn build
 $ yarn start:dev
 
