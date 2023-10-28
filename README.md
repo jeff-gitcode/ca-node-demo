@@ -1,5 +1,15 @@
 ## TS CA NODE Demo
 
+### Tech Stack
+
+- [x] ca
+- [x] nodemon
+- [x] ts
+- [x] swagger
+- [x] inversify
+- [x] jsonplaceholder
+- [x] winston
+
 ```javascript
 $ mkdir ca-node-demo
 
@@ -23,6 +33,9 @@ $ yarn add -D typescript ts-node @typescript-eslint/eslint-plugin @typescript-es
 # swagger  http://localhost:3111/api-docs
 $ yarn add swagger-ui-express swagger-jsdoc
 $ yarn add -D @types/swagger-ui-express @types/swagger-jsdoc
+
+# logger
+$ yarn add winston
 
 $ yarn build
 $ yarn start:dev

@@ -25,9 +25,11 @@
     "express": "^4.18.2",
     "inversify": "^6.0.2",
     "inversify-express-utils": "^6.4.3",
+    "node-fetch": "^3.3.2",
     "reflect-metadata": "^0.1.13",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.0"
+    "swagger-ui-express": "^5.0.0",
+    "winston": "^3.11.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.15",
