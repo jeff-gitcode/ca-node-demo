@@ -9,6 +9,7 @@
 - [x] inversify
 - [x] jsonplaceholder
 - [x] winston
+- [x] bcryptjs
 
 ```javascript
 $ mkdir ca-node-demo
@@ -36,6 +37,10 @@ $ yarn add -D @types/swagger-ui-express @types/swagger-jsdoc
 
 # logger
 $ yarn add winston
+
+# bcryptjs
+$ yarn add bcryptjs jsonwebtoken
+$ yarn add -D @types/bcryptjs @types/jsonwebtoken
 
 $ yarn build
 $ yarn start:dev
