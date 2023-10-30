@@ -11,6 +11,7 @@ export class AuthRepository implements IAuthRepository {
             return authUser.email === user.email && authUser.password === user.password;
         });
     }
+    
     async updateUser(user: User): Promise<boolean> {
         return this.authUsers.some((authUser, index) => {
             if (authUser.id === user.id) {

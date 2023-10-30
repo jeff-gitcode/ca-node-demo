@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { controller, httpDelete, httpGet, httpPatch, httpPost, httpPut, request, response } from "inversify-express-utils";
+import { controller, httpDelete, httpGet, httpPatch, httpPost, request, response } from "inversify-express-utils";
 import { inject } from "inversify";
+
 import { UserUseCase } from "../application/UserUseCase";
 import { User } from "../domain/User";
 
@@ -9,7 +10,7 @@ export class UserController {
     constructor(@inject(UserUseCase) private userUseCase: UserUseCase) { }
 
     @httpGet("/")
-    async getUsers(_: Request, res: Response) {
+    async getUsers(@request() _: Request, @response() res: Response) {
         try {
             const users = await this.userUseCase.getUsers();
             return res.json(users);

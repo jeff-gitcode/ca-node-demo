@@ -1,5 +1,5 @@
 export const TYPES = {
     IUserRepository: Symbol.for('IUserRepository'),
-    IAuth: Symbol.for('IAuth'),
+    IAuthRepository: Symbol.for('IAuthRepository'),
     Logger: Symbol.for('Logger')
 };

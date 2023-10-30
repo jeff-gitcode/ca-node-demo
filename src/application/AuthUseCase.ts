@@ -6,7 +6,7 @@ import { User } from "../domain/User";
 
 @injectable()
 export class AuthUseCase {
-    constructor(@inject(TYPES.IAuth) private iAuth: IAuthRepository,
+    constructor(@inject(TYPES.IAuthRepository) private iAuth: IAuthRepository,
         @inject(TYPES.Logger) private logger: Logger
     ) { }
 

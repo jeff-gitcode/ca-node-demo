@@ -24,3 +24,13 @@ content-type: application/json
   "email": "john.doe@email.com",
   "password": "123456"
 }
+
+### loginUser
+GET http://localhost:3111/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "name": "John New",
+  "email": "john.doe@email.com",
+  "password": "123456"
+}
