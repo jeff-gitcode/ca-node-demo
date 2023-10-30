@@ -14,3 +14,13 @@ content-type: application/json
   "name": "John New",
   "email": "john.doe@email.com",
 }
+
+### registerUser
+POST http://localhost:3111/auth/register HTTP/1.1
+content-type: application/json
+
+{
+  "name": "John New",
+  "email": "john.doe@email.com",
+  "password": "123456"
+}

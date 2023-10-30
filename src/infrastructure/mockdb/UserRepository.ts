@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
-import { IUserRepository } from "../application/interface/IRepository";
-import { User } from "../domain/User";
+import { IUserRepository } from "../../application/interface/IRepository";
+import { User } from "../../domain/User";
 import { users } from "./db";
 
 @injectable()

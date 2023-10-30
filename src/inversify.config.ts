@@ -7,6 +7,7 @@ import * as winston from 'winston';
 // import { UserRepository } from "./infrastructure/UserRepository";
 import { TYPES } from "./types";
 import { JsonPlaceHolderUserRepository } from "./infrastructure/jsonplaceholder/JsonPlaceHolderUserRepository";
+import { AuthUseCase } from "./application/AuthUseCase";
 
 const container = new Container();
 
@@ -23,6 +24,7 @@ const logger = winston.createLogger({
 container.bind<winston.Logger>(TYPES.Logger).toConstantValue(logger);
 container.bind<UserController>(UserController).toSelf();
 container.bind<UserUseCase>(UserUseCase).toSelf();
+container.bind<AuthUseCase>(AuthUseCase).toSelf();
 container.bind<IUserRepository>(TYPES.IUserRepository).to(JsonPlaceHolderUserRepository);
 // container.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
 

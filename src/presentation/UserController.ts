@@ -20,7 +20,7 @@ export class UserController {
     }
 
     @httpGet("/:id")
-    async getUser(req: Request, res: Response) {
+    async getUser(@request() req: Request, @response() res: Response) {
         try {
             const user = await this.userUseCase.getUser(req.params.id);
             return res.json(user);
