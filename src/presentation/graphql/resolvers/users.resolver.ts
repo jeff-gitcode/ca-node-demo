@@ -5,7 +5,7 @@ import { IUserUseCase } from "../../../application/interface/IUserUseCase";
 import { User } from "../../../domain/User";
 
 @injectable()
-@Resolver(of => User)
+@Resolver()
 export class UserResolver {
     constructor(@inject(TYPES.IUserUseCase) private userUseCase: IUserUseCase) { }
 

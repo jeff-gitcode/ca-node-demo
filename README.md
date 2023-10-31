@@ -11,7 +11,7 @@
 - [x] winston
 - [x] bcryptjs
 - [x] graphql
--
+- ![alt text](./doc/ca-graphql-demo.gif)
 -
 
 ```javascript
