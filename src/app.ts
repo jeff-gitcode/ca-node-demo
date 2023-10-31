@@ -13,6 +13,8 @@ import { ApolloServer } from "@apollo/server";
 import { typeDefs } from "./presentation/graphql/schemas/user.schema";
 import { UserResolver } from "./presentation/graphql/resolvers/users.resolver";
 import { TYPES } from "./types";
+import { GraphQLSchema } from "graphql";
+import { buildSchema } from "type-graphql";
 // import { typeDefs } from "./presentation/graphql/schemas/book.schema";
 // import { resolvers } from "./presentation/graphql/resolvers/books.resolver";
 
@@ -48,6 +50,21 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
+async function generateSchema(): Promise<GraphQLSchema> {
+    try {
+        const schema = await buildSchema({
+            container,
+            resolvers: [
+                UserResolver,
+            ]
+        })
+        return schema
+    } catch (e) {
+        console.error(e)
+        throw e
+    }
+}
+
 const serverBuilder = new InversifyExpressServer(container);
 
 serverBuilder.setConfig(async (app) => {
@@ -72,7 +89,8 @@ serverBuilder.setConfig(async (app) => {
     // app.use(json());
 
     // const resolvers = container.get<UserResolver>(TYPES.UserResolver);
-    const server = new ApolloServer({ typeDefs });
+    const schema = await generateSchema();
+    const server = new ApolloServer({ schema });
     await server.start();
 
     app.use(

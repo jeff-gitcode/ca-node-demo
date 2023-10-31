@@ -5,12 +5,12 @@ import { IUserUseCase } from "../../../application/interface/IUserUseCase";
 import { User } from "../../../domain/User";
 
 @injectable()
-@Resolver()
+@Resolver(of => User)
 export class UserResolver {
     constructor(@inject(TYPES.IUserUseCase) private userUseCase: IUserUseCase) { }
 
     @Query(() => [User])
-    async getUsers() {
+    async users() {
         try {
             const users = await this.userUseCase.getUsers();
             return users;
