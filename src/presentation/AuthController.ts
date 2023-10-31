@@ -3,14 +3,16 @@ import { Request, Response } from "express";
 import { controller, httpGet, httpPost, request, response } from "inversify-express-utils";
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { AuthUseCase } from "../application/AuthUseCase";
+// import { AuthUseCase } from "../application/AuthUseCase";
 import { User } from "../domain/User";
+import { TYPES } from "../types";
+import { IAuthUseCase } from "../application/interface/IAuthUseCase";
 
 
 @controller("/auth")
 export class AuthController {
-    constructor(@inject(AuthUseCase) private authUseCase: AuthUseCase) { }
-
+    // constructor(@inject(AuthUseCase) private authUseCase: AuthUseCase) { }
+    constructor(@inject(TYPES.IAuthUseCase) private authUseCase: IAuthUseCase) { }
     @httpPost('/register')
     async registerUser(@request() req: Request, @response() res: Response) {
         try {
@@ -20,6 +22,8 @@ export class AuthController {
             const newUser: User = new User(1, req.body.name, req.body.email, hash);
 
             // Create token
+            // node
+            // require("crypto").randomBytes(35).toString("hex")
             const payload = { user_id: newUser.id, email: newUser.email };
             const jwt_secret = process.env.JWT_SECRET;
             const options = {

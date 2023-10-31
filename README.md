@@ -10,6 +10,9 @@
 - [x] jsonplaceholder
 - [x] winston
 - [x] bcryptjs
+- [x] graphql
+-
+-
 
 ```javascript
 $ mkdir ca-node-demo
@@ -42,8 +45,14 @@ $ yarn add winston
 $ yarn add bcryptjs jsonwebtoken
 $ yarn add -D @types/bcryptjs @types/jsonwebtoken
 
+# graphql
+$ yarn add @apollo/server graphql express cors body-parser @graphql-tools/schema type-graphql
+$ yarn add -D @types/graphql @types/cors @types/express @types/body-parser
+
 $ yarn build
 $ yarn start:dev
+
+
 
 # http://localhost:3111/users
 

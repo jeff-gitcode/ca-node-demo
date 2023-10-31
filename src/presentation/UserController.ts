@@ -2,12 +2,15 @@ import { Request, Response } from "express";
 import { controller, httpDelete, httpGet, httpPatch, httpPost, request, response } from "inversify-express-utils";
 import { inject } from "inversify";
 
-import { UserUseCase } from "../application/UserUseCase";
+// import { UserUseCase } from "../application/UserUseCase";
 import { User } from "../domain/User";
+import { TYPES } from "../types";
+import { IUserUseCase } from "../application/interface/IUserUseCase";
 
 @controller("/users")
 export class UserController {
-    constructor(@inject(UserUseCase) private userUseCase: UserUseCase) { }
+    // constructor(@inject(UserUseCase) private userUseCase: UserUseCase) { }
+    constructor(@inject(TYPES.IUserUseCase) private userUseCase: IUserUseCase) { }
 
     @httpGet("/")
     async getUsers(@request() _: Request, @response() res: Response) {

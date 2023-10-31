@@ -7,6 +7,14 @@ import * as bodyParser from "body-parser";
 import cors from 'cors';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+// import { makeExecutableSchema } from "@graphql-tools/schema";
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServer } from "@apollo/server";
+import { typeDefs } from "./presentation/graphql/schemas/user.schema";
+import { UserResolver } from "./presentation/graphql/resolvers/users.resolver";
+import { TYPES } from "./types";
+// import { typeDefs } from "./presentation/graphql/schemas/book.schema";
+// import { resolvers } from "./presentation/graphql/resolvers/books.resolver";
 
 const { API_PORT } = process.env;
 const port = process.env.PORT || API_PORT;
@@ -40,9 +48,9 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
-const server = new InversifyExpressServer(container);
+const serverBuilder = new InversifyExpressServer(container);
 
-server.setConfig((app) => {
+serverBuilder.setConfig(async (app) => {
     app.use(cors());
     app.use((req, res, next) => {
         res.header("Access-Control-Allow-Origin", "*");
@@ -52,22 +60,32 @@ server.setConfig((app) => {
 
     app.use(bodyParser.json());
 
-    app.use(
-        "/api-docs",
-        swaggerUi.serve,
-        swaggerUi.setup(specs, {
-            explorer: true,
-            customCssUrl:
-                "https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.0/themes/3.x/theme-newspaper.css",
-        })
-    );
+    // app.use(
+    //     "/api-docs",
+    //     swaggerUi.serve,
+    //     swaggerUi.setup(specs, {
+    //         explorer: true,
+    //         customCssUrl:
+    //             "https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.0/themes/3.x/theme-newspaper.css",
+    //     })
+    // );
     // app.use(json());
+
+    // const resolvers = container.get<UserResolver>(TYPES.UserResolver);
+    const server = new ApolloServer({ typeDefs });
+    await server.start();
+
+    app.use(
+        expressMiddleware(server)
+    );
+
 });
+
 
 // server.build().get('/', (request, response) => {
 //     response.send('Hello, GraphQL!')
 // })
 
-server.build().listen(port, () => {
+serverBuilder.build().listen(port, () => {
     console.log(`Server started on http://localhost:${port}`);
 });
