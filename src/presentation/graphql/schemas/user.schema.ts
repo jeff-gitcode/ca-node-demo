@@ -8,15 +8,15 @@ const typeDefs = `#graphql
 			users: [User]
 			user(id: ID!): User
 		}
-		# type Mutation {
-		# 	# addUser(name: String!, surname: String!, created_at: Timestamp): User
-		# 	# deleteUser(id: ID!): User
-		# 	# updateUser(id: ID!, name: String!, surname: String!): User
-		# }
+		type Mutation {
+			addUser(id: ID!, name: String!, email: String!): User
+			deleteUser(id: ID!): User
+			updateUser(id: ID!, name: String!, email: String!): User
+		}
 		type User {
-			id: ID
-			name: String
-			email: String
+			id: ID!
+			name: String!
+			email: String!
             password: String
             token: String
 		}

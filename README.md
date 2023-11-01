@@ -12,7 +12,8 @@
 - [x] bcryptjs
 - [x] graphql
 - ![alt text](./doc/ca-graphql-demo.gif)
--
+- ![alt text](./doc/mutation-demo.png)
+- [x] jest
 
 ```javascript
 $ mkdir ca-node-demo
@@ -51,9 +52,11 @@ $ yarn add -D @types/graphql @types/cors @types/express @types/body-parser
 
 $ yarn build
 $ yarn start:dev
-
-
-
 # http://localhost:3111/users
 
+# test
+$ yarn add -D jest ts-jest @types/jest
+# create js config
+$ npx ts-jest config:init
+$ yarn test
 ```
