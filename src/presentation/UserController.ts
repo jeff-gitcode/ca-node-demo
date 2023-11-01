@@ -13,7 +13,7 @@ export class UserController {
     constructor(@inject(TYPES.IUserUseCase) private userUseCase: IUserUseCase) { }
 
     @httpGet("/")
-    async getUsers(@request() _: Request, @response() res: Response) {
+    async getUsers(@request() req: Request, @response() res: Response) {
         try {
             const users = await this.userUseCase.getUsers();
             return res.json(users);
